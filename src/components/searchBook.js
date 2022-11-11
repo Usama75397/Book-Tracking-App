@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Route } from "react-router-dom";
 import { search } from "./BookAPI";
 import Book from "./Book";
 
 const Search = (props) => {
   const [searchBook, setSearchBook] = useState([]);
-  const [api, setApi] = useState("");
+  const [input, setInput] = useState("");
 
   useEffect(() => {
-    if (api) {
-      search(api).then((data) => {
+    if (input) {
+      search(input).then((data) => {
         if (data.error) {
           setSearchBook([]);
         } else {
@@ -16,7 +17,7 @@ const Search = (props) => {
         }
       });
     }
-  }, [api]);
+  }, [input]);
 
   return (
     <div className="search-books">
@@ -31,8 +32,8 @@ const Search = (props) => {
           <input
             type="text"
             placeholder="Search by title, author, or ISBN"
-            value={api}
-            onChange={(e) => setApi(e.target.value)}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
         </div>
       </div>
@@ -40,7 +41,10 @@ const Search = (props) => {
         <ol className="books-grid">
           {searchBook.map((book) => (
             <li key={book.id}>
-              <Book book={book} changeBookShelf={props.updateBookShelf} />
+              <Book
+                book={book}
+                changeBookShelf={props.updateBookShelf}
+              />
             </li>
           ))}
         </ol>

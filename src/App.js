@@ -17,12 +17,20 @@ function App() {
   }, []);
 
   const updateBookShelf = (book, whereToMove) => {
+    let a = true;
     const updateBook = books.map((b) => {
       if (b.id === book.id) {
         b.shelf = whereToMove;
+        a = false
       }
       return b;
     });
+
+    if (a){
+      book.shelf = whereToMove;
+      updateBook.push(book);
+    }
+
     setBooks(updateBook);
     update(book, whereToMove);
   };

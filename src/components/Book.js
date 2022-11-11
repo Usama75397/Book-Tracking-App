@@ -1,9 +1,10 @@
 import React from "react";
 
 const Book = ({ book, changeBookShelf }) => {
-  
+  console.log("shelf", book.shelf)
   return (
     <div className="book">
+      {console.log("BOOK", book)}
       <div className="book-top">
         <div
           className="book-cover"
@@ -15,7 +16,7 @@ const Book = ({ book, changeBookShelf }) => {
         ></div>
         <div className="book-shelf-changer">
           <select
-            defaultValue={book.shelf ? book.shelf : "none"}
+            defaultValue={book.shelf}
             onChange={(e) => changeBookShelf(book, e.target.value)}
           >
             <option value="move" disabled>
