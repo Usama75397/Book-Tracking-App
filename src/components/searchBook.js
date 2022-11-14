@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { search } from "./BookAPI";
 import Book from "./Book";
 
+/* Search page */
+
 const Search = (props) => {
   const [searchBook, setSearchBook] = useState([]);
   const [input, setInput] = useState("");

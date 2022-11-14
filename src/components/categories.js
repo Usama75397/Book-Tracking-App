@@ -1,6 +1,8 @@
 import React from "react";
 import Shelf from "./Shelf";
 
+/*Categories*/
+
 const Categories = ({ books, updateBookShelf }) => {
   const currentlyReading = books.filter(
     (book) => book.shelf === "currentlyReading"

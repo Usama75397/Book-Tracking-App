@@ -16,8 +16,6 @@ function App() {
     });
   }, []);
 
-  {/* main1 */}
-
   const updateBookShelf = (book, whereToMove) => {
     let a = true;
     const updateBook = books.map((b) => {
@@ -41,12 +39,14 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
+          {/* Search page */}
           <Route path="/search">
             <Search updateBookShelf={updateBookShelf} />
           </Route>
           <Route path="/">
             <div className="list-books">
               <Header />
+              {/* Main page */}
               <div className="list-books-content">
                 <Categories books={books} updateBookShelf={updateBookShelf} />
                 <div className="open-search">
