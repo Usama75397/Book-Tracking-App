@@ -1,5 +1,5 @@
 import React from "react";
-import Shelf from "./shelf";
+import Shelf from "./Shelf";
 
 const Categories = ({ books, updateBookShelf }) => {
   const currentlyReading = books.filter(

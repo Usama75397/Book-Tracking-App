@@ -2,12 +2,17 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Categories from "./components/categories";
-import Search from "./components/searchBook";
+import Search from "./components/SearchBook";
 import { getAll, update } from "./components/BookAPI";
-import AddBook from "./components/addbook";
+import AddBook from "./components/Addbook";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+} from "react-router-dom";
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -21,12 +26,12 @@ function App() {
     const updateBook = books.map((b) => {
       if (b.id === book.id) {
         b.shelf = whereToMove;
-        a = false
+        a = false;
       }
       return b;
     });
 
-    if (a){
+    if (a) {
       book.shelf = whereToMove;
       updateBook.push(book);
     }
@@ -37,22 +42,27 @@ function App() {
 
   return (
     <div className="app">
-      {showSearchPage ? (
-        <Search
-          setShowSearchpage={setShowSearchpage}
-          updateBookShelf={updateBookShelf}
-        />
-      ) : (
-        <div className="list-books">
-          <Header />
-          <div className="list-books-content">
-            <Categories books={books} updateBookShelf={updateBookShelf} />
-            <div className="open-search">
-              <AddBook setShowSearchpage={setShowSearchpage} />
+      <Router>
+        <Switch>
+          <Route path="/search">
+          <Search
+            updateBookShelf={updateBookShelf}
+          />
+          </Route>
+          <Route path="/">
+            <div className="list-books">
+              <Header />
+              <div className="list-books-content">
+                <Categories books={books} updateBookShelf={updateBookShelf} />
+                <div className="open-search">
+                  <Link to="/search"><AddBook /></Link>
+
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
