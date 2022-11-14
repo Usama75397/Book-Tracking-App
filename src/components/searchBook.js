@@ -22,9 +22,7 @@ const Search = (props) => {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <Link to="/"
-          className="close-search"
-        >
+        <Link to="/" className="close-search">
           Close
         </Link>
         <div className="search-books-input-wrapper">
@@ -40,10 +38,7 @@ const Search = (props) => {
         <ol className="books-grid">
           {searchBook.map((book) => (
             <li key={book.id}>
-              <Book
-                book={book}
-                changeBookShelf={props.updateBookShelf}
-              />
+              <Book book={book} changeBookShelf={props.updateBookShelf} />
             </li>
           ))}
         </ol>

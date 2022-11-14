@@ -1,13 +1,11 @@
-const AddBook = (props) => {
-    return (
-      <div className="list-books">
-        <div className="open-search">
-          <a onClick={() => props.setShowSearchpage(!props.showSearchPage)}>
-            Add a book
-          </a>
-        </div>
+const AddBook = () => {
+  return (
+    <div className="list-books">
+      <div className="open-search">
+          Add a book
       </div>
-    );
-  };
-  
-  export default AddBook;
+    </div>
+  );
+};
+
+export default AddBook;

@@ -5,12 +5,7 @@ import Categories from "./components/categories";
 import Search from "./components/SearchBook";
 import { getAll, update } from "./components/BookAPI";
 import AddBook from "./components/Addbook";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -20,6 +15,8 @@ function App() {
       setBooks(data);
     });
   }, []);
+
+  {/* main1 */}
 
   const updateBookShelf = (book, whereToMove) => {
     let a = true;
@@ -45,9 +42,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/search">
-          <Search
-            updateBookShelf={updateBookShelf}
-          />
+            <Search updateBookShelf={updateBookShelf} />
           </Route>
           <Route path="/">
             <div className="list-books">
@@ -55,8 +50,9 @@ function App() {
               <div className="list-books-content">
                 <Categories books={books} updateBookShelf={updateBookShelf} />
                 <div className="open-search">
-                  <Link to="/search"><AddBook /></Link>
-
+                  <Link to="/search">
+                    <AddBook />
+                  </Link>
                 </div>
               </div>
             </div>
