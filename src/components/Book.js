@@ -6,7 +6,6 @@ const Book = ({ book, changeBookShelf }) => {
   
   return (
     <div className="book">
-      {console.log("BOOK", book)}
       <div className="book-top">
         <div
           className="book-cover"

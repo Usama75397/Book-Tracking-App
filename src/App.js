@@ -5,6 +5,9 @@ import Categories from "./components/categories";
 import Search from "./components/SearchBook";
 import { getAll, update } from "./components/BookAPI";
 import AddBook from "./components/Addbook";
+import SignIn from "./components/SignIn";
+import LogOut from "./components/LogOut";
+import LoginHeader from "./components/LoginHead";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 function App() {
@@ -39,14 +42,19 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
-          {/* Search page */}
+          <Route exact path="/">
+            <LoginHeader />
+          </Route>
+          <Route path="/login">
+            <SignIn />
+          </Route>
           <Route path="/search">
             <Search updateBookShelf={updateBookShelf} />
           </Route>
-          <Route path="/">
+          <Route path="/shelf">
             <div className="list-books">
               <Header />
-              {/* Main page */}
+              <LogOut />
               <div className="list-books-content">
                 <Categories books={books} updateBookShelf={updateBookShelf} />
                 <div className="open-search">
