@@ -1,10 +1,11 @@
 import React from "react";
 
+/* book-shelf */
+
 const Book = ({ book, changeBookShelf }) => {
-  console.log("shelf", book.shelf)
+  
   return (
     <div className="book">
-      {console.log("BOOK", book)}
       <div className="book-top">
         <div
           className="book-cover"

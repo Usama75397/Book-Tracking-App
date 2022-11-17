@@ -5,12 +5,10 @@ import Categories from "./components/categories";
 import Search from "./components/SearchBook";
 import { getAll, update } from "./components/BookAPI";
 import AddBook from "./components/Addbook";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-} from "react-router-dom";
+import SignIn from "./components/SignIn";
+import LogOut from "./components/LogOut";
+import LoginHeader from "./components/LoginHead";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -44,19 +42,25 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
-          <Route path="/search">
-          <Search
-            updateBookShelf={updateBookShelf}
-          />
+          <Route exact path="/">
+            <LoginHeader />
           </Route>
-          <Route path="/">
+          <Route path="/login">
+            <SignIn />
+          </Route>
+          <Route path="/search">
+            <Search updateBookShelf={updateBookShelf} />
+          </Route>
+          <Route path="/shelf">
             <div className="list-books">
               <Header />
+              <LogOut />
               <div className="list-books-content">
                 <Categories books={books} updateBookShelf={updateBookShelf} />
                 <div className="open-search">
-                  <Link to="/search"><AddBook /></Link>
-
+                  <Link to="/search">
+                    <AddBook />
+                  </Link>
                 </div>
               </div>
             </div>
